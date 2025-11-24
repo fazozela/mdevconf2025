@@ -1,1 +1,440 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+}
+
+:root {
+  --nerv-purple: #4a1a4a;
+  --nerv-green: #00ff41;
+  --nerv-cyan: #00d4ff;
+  --nerv-red: #ff0000;
+  --nerv-orange: #ff6b00;
+  --nerv-dark: #0a0a0a;
+  --nerv-gray: #1a1a1a;
+}
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.95);
+  border-bottom: 3px solid var(--nerv-red);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+nav a {
+  color: var(--nerv-green);
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+  position: relative;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+nav a:hover {
+  color: var(--nerv-cyan);
+  border: 2px solid var(--nerv-cyan);
+  box-shadow: 0 0 10px var(--nerv-cyan);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Section styling */
+section {
+  min-height: 100vh;
+  padding: 6rem 0 4rem;
+  position: relative;
+}
+
+section h2 {
+  font-size: 3rem;
+  color: var(--nerv-red);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+  text-shadow: 0 0 20px var(--nerv-red);
+}
+
+section h2:before {
+  content: '//';
+  color: var(--nerv-green);
+  margin-right: 1rem;
+}
+
+section h2:after {
+  content: '';
+  display: block;
+  width: 200px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--nerv-red), transparent);
+  margin: 1rem auto;
+}
+
+/* Intro Section */
+#intro {
+  background: linear-gradient(135deg, var(--nerv-purple) 0%, var(--nerv-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#intro:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 65, 0.03) 2px,
+      rgba(0, 255, 65, 0.03) 4px);
+  pointer-events: none;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 1;
+}
+
+.intro-title {
+  font-size: 4rem;
+  color: var(--nerv-red);
+  text-shadow: 0 0 30px var(--nerv-red);
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.intro-subtitle {
+  font-size: 1.5rem;
+  color: var(--nerv-cyan);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.intro-content img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  margin: 2rem auto;
+  display: block;
+  filter: drop-shadow(0 0 20px var(--nerv-cyan));
+  transition: all 0.3s ease;
+}
+
+.intro-content img:hover {
+  filter: drop-shadow(0 0 30px var(--nerv-red));
+  transform: scale(1.05);
+}
+
+.warning-strip {
+  background: repeating-linear-gradient(45deg,
+      var(--nerv-orange),
+      var(--nerv-orange) 10px,
+      var(--nerv-dark) 10px,
+      var(--nerv-dark) 20px);
+  padding: 1rem;
+  margin: 2rem 0;
+  border: 2px solid var(--nerv-orange);
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: var(--nerv-green);
+}
+
+/* Speakers Section */
+#speakers {
+  background: var(--nerv-dark);
+}
+
+.speakers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.speaker-card {
+  background: var(--nerv-gray);
+  border: 3px solid var(--nerv-purple);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+
+.speaker-card:hover {
+  border-color: var(--nerv-cyan);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+  transform: translateY(-5px);
+}
+
+.speaker-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--nerv-red), var(--nerv-orange), var(--nerv-green));
+}
+
+.speaker-image {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, var(--nerv-purple), var(--nerv-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  border-bottom: 2px solid var(--nerv-red);
+}
+
+.speaker-info {
+  padding: 1.5rem;
+}
+
+.speaker-name {
+  font-size: 1.5rem;
+  color: var(--nerv-cyan);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.speaker-role {
+  color: var(--nerv-green);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.speaker-description {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* Schedule Section */
+#schedule {
+  background: linear-gradient(180deg, var(--nerv-dark) 0%, var(--nerv-gray) 100%);
+}
+
+.schedule-date {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--nerv-orange);
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.schedule-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.schedule-item {
+  background: var(--nerv-gray);
+  border-left: 5px solid var(--nerv-red);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.schedule-item:hover {
+  border-left-color: var(--nerv-cyan);
+  box-shadow: -5px 0 20px rgba(0, 212, 255, 0.3);
+  transform: translateX(5px);
+}
+
+.schedule-time {
+  color: var(--nerv-orange);
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: monospace;
+}
+
+.schedule-speaker {
+  color: var(--nerv-cyan);
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+}
+
+.schedule-topic {
+  color: var(--nerv-green);
+  font-size: 1rem;
+}
+
+/* Past Events Section */
+#past-events {
+  background: var(--nerv-dark);
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.event-video {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  /* 16:9 aspect ratio */
+  background: var(--nerv-gray);
+  border: 2px solid var(--nerv-purple);
+  overflow: hidden;
+}
+
+.event-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.event-video:hover {
+  border-color: var(--nerv-cyan);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+/* Footer */
+footer {
+  background: var(--nerv-dark);
+  border-top: 3px solid var(--nerv-red);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.footer-logo {
+  font-size: 3rem;
+  color: var(--nerv-red);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px var(--nerv-red);
+}
+
+.footer-text {
+  color: var(--nerv-green);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.speaker-image {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, var(--nerv-purple), var(--nerv-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  border-bottom: 2px solid var(--nerv-red);
+  overflow: hidden;
+  position: relative;
+}
+
+.speaker-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.speaker-image:hover img {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .intro-title {
+    font-size: 2.5rem;
+  }
+
+  .intro-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .intro-content img {
+    max-width: 300px;
+    margin: 1.5rem auto;
+  }
+
+  section h2 {
+    font-size: 2rem;
+  }
+
+  nav a {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .speakers-grid,
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-title {
+    font-size: 2rem;
+  }
+
+  .intro-content img {
+    max-width: 250px;
+    margin: 1rem auto;
+  }
+
+  .warning-strip {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
